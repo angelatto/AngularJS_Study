@@ -1,0 +1,22 @@
+<script>
+    // 새로운 모듈 생성 
+    var myModule1 = angular.module("myModule", []);
+
+    // 기존에 생성된 모듈을 가져오기 
+    var myModule2 = angular.module("myModule");
+
+    // 두 변수가 참조하는 모듈 객체가 동일한지 검사 
+    if(myModule1 === myModule2){
+        console.log("같은 모듈 객체 참조");
+    }else{
+        console.log("다른 모듈 객체 참조");
+    }
+</script>
+<div class="card">
+    <div class="card-header">
+        exam02_module_create_find
+    </div>
+    <div class="card-body">
+        
+    </div>
+</div>
