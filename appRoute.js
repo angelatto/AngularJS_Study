@@ -2,11 +2,12 @@
 angular.module("app")
     .config(function($locationProvider, $routeProvider) {
         console.log("appRoute.js - config callback");
-        // HTML5 모드 활성화 
-        $locationProvider.html5Mode({
-            enabled: true,
-            requireBase: true
-        });  /* 위의 설정으로 a태그가 더 이상 서버로 요청을 보내지 않음  */
+        // HTML5 모드 활성화 -> #!가 사라진다. , 주로 하이브리드 앱 만들 때 사용한다. 개발할 때는 비활성화해놓는다.
+        // $locationProvider.html5Mode({
+        //     enabled: true,
+        //     requireBase: true
+        // }); 
+         /* 위의 설정으로 a태그가 더 이상 서버로 요청을 보내지 않음  */
 
         // 라우트 정의 : URL과 VIEW 연결 
         $routeProvider
@@ -16,8 +17,13 @@ angular.module("app")
             .when("/exam04_module_config_run_callback", {templateUrl: "views/exam04_module_config_run_callback.html"})
             .when("/exam05_controller_declaration", {templateUrl: "views/exam05_controller_declaration.html", controller: "exam05Controller"})
             .when("/exam06_scope_property_method", {templateUrl: "views/exam06_scope_property_method.html", controller: "exam06Controller"})
+            .when("/exam07_scope_implicit_property", {templateUrl: "views/exam07_scope_implicit_property.html", controller: "exam07Controller"})
+            .when("/exam08_rootScope_nestedcontroller", {templateUrl: "views/exam08_rootScope_nestedcontroller.html", controller: "exam08Controller"})
+            .when("/exam09_scope_broadcast", {templateUrl: "views/exam09_scope_broadcast.html", controller: "exam09Controller"})
+            .when("/exam10_scope_watch", {templateUrl: "views/exam10_scope_watch.html", controller: "exam10Controller"})
+            .when("/exam11_outside_to_scope", {templateUrl: "views/exam11_outside_to_scope.html", controller: "exam11Controller"})
+            .when("/exam12_one_way_binding", {templateUrl: "views/exam12_one_way_binding.html", controller: "exam12Controller"})
+            .when("/exam13_two_way_binding", {templateUrl: "views/exam13_two_way_binding.html", controller: "exam13Controller"})
             .otherwise({redirectTo: "/"});
-        
-    
     
     });

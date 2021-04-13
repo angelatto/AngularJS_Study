@@ -12,8 +12,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
 
-    <base href="/"/>
-<!-- live server는 항상 가장 위에 경로를 '/'로 본다. 어떤 폴더를 루트로 열었느냐에 따라 경로가 달라질 수 있다. -->
+    <!-- <base href="/"/> -->
+<!-- 
+    html mode5가 활성화되었을 때 베이스 경로를 지정한다. 
+    live server는 항상 가장 위에 경로를 '/'로 본다. 어떤 폴더를 루트로 열었느냐에 따라 경로가 달라질 수 있다. 
+-->
 
     <script src="app.js"></script>
     <script src="appRoute.js"></script>
@@ -23,17 +26,27 @@
 
     <script src="controllers/exam05Controller.js"></script>
     <script src="controllers/exam06Controller.js"></script>
+    <script src="controllers/exam07Controller.js"></script>
+    <script src="controllers/exam08Controller.js"></script>
+    <script src="controllers/exam09Controller.js"></script>
+    <script src="controllers/exam10Controller.js"></script>
+    <script src="controllers/exam11Controller.js"></script>
+    <script src="controllers/exam12Controller.js"></script>
+    <script src="controllers/exam13Controller.js"></script>
 </head>
-<body>
+<body ng-controller="mainController">
     <div class="d-flex flex-column vh-100">
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark text-white font-weight-bold justify-content-between">
             <a class="navbar-brand" href="./">
             <img src="./resources/img/angular.png" width="30" height="30" class="d-inline-block align-top">
             AngularJS
-            </a>
+            </a> 
             <div>
-                <div ng-show="!uid">
-                    <a class="btn btn-success btn-sm" href="/">로그인</a>
+                <div ng-show="!rootUid">
+                    <a class="btn btn-success btn-sm" href="/#!/exam08_rootScope_nestedcontroller">로그인</a>
+                </div>
+                <div ng-show="rootUid">
+                    ID: {{rootUid}} <button class="btn btn-success btn-sm ml-2" ng-click="logout()">로그아웃</button>
                 </div>
             </div>
         </nav>

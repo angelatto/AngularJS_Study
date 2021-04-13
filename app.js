@@ -15,6 +15,43 @@ angular.module("app", ["ngRoute", "exam03Module", "exam04Module"])
     .config(function() {
         console.log("app.js - config callback ");
     })
-    .run(function() {
+    .run(function($rootScope) {
         console.log("app.js - run callback");
+        // 전역 데이터 
+        $rootScope.rootUid = "user100";
+        // 전역 함수 
+        $rootScope.rootGetGreet = () => {
+            return "Hello AngularJS";
+        };
+    })
+    /* 
+    중첩된 컨트롤러 범위에서 사용할 수 있는 상태 데이터 및 함수 
+    mainController를 index.html의 body에 설정해놓으면 계층관계로 인해서
+    다른 모든 컨트롤러에서도 사용 가능하다. 
+    */
+    .controller("mainController", function($scope, $rootScope){
+        $scope.mainUid = "user200";
+
+        $scope.mainGetGreet = () => {
+            return "Hello, MainController";
+        };
+
+        $scope.logout = () => {
+            $rootScope.rootUid = "";
+           // delete $rootScope.rootUid;
+        };
+
+        // login 방송 수신 
+        $scope.$on("loginSuccess", (event, message) => {
+            console.log("mainController가 loginSuccess 방송 수신함");
+            console.log(message);
+            $rootScope.rootUid = message.uid;
+        });
+
+        // logout 방송 수신 
+        $scope.$on("logout", (event, message) => {
+            console.log("mainController가 logout 방송 수신함");
+            $rootScope.rootUid = "";
+        });
+
     });
