@@ -1,0 +1,26 @@
+<div id="exam11Card" class="card">
+    <div class="card-header">
+      exam12_one_way_binding
+    </div>
+    <div class="card-body">
+      <div ng-cloak> 
+        There are
+          <span class="text-danger">{{todos.length}}</span> items
+      </div>
+
+      <div>
+        There are
+          <span class="text-danger" ng-bind="todos.length"></span> items
+      </div>
+
+      <div ng-cloak> 
+        First Item: 
+          <span class="text-danger">{{todos[0].action}}</span> 
+      </div>
+
+      <div>
+        First Item: 
+          <span class="text-danger" ng-bind="todos.length"></span> 
+      </div>
+    </div>
+</div>
