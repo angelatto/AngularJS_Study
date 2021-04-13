@@ -4,7 +4,8 @@ angular.module("app")
         console.log("exam08Controller instanciation (객체 생성 시점 확인)");
         $scope.controllerName = "exam08Controller";
         
-        $scope.login = (user) => {
+        // view에서 ng-click시에 여기로 들어옴 
+        $scope.login = (user) => { 
             if(user && user.uid && user.upassword){
                 // 로그인이 성공되었다고 가정 
                 $rootScope.rootUid = user.uid;
