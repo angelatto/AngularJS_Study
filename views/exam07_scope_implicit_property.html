@@ -1,0 +1,45 @@
+<div class="card" >
+    <div class="card-header">
+        exam07_scope_implicit_property
+        <span class="badge badge-info ml-2">{{(todos | filter: {complete:false}).length}}</span>
+    </div>
+    <div class="card-body row">
+        <div class="col-sm-6">
+            <div class="card card-body">
+              <div class="form-group">
+                <label for="actionText">Action:</label>
+                <input id="actionText" type="text" class="form-control" ng-model="newTodo.action"/> 
+              </div>
+              <div class="form-group">
+                <label for="actionLocation">Location:</label>
+                <select id="actionLocation" ng-model="newTodo.location">
+                    <option value="Home">Home</option>
+                    <option value="Office">Office</option>
+                </select>
+              </div>
+              <button class="btn btn-primary btn-sm mb-2" ng-click="addNewItem1(newTodo)">추가</button>
+              <button class="btn btn-primary btn-sm" ng-click="addNewItem2()">추가</button>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Action</th>
+                  <th>Done</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="item in todos">
+                  <td>{{$index+1}}</td>
+                  <td>{{item.action}}</td>
+                  <td>{{item.complete}}</td>
+                  <td><input type="checkbox" ng-model="item.complete"/></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+    </div>
+</div>
