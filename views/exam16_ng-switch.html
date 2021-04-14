@@ -1,0 +1,46 @@
+<div class="card">
+    <div class="card-header">
+      exam16_ng-switch
+    </div>
+    <div class="card-body">
+      <div class="alert alert-primary">
+        <div ng-repeat="mode in view.modes">
+          <input type="radio" ng-model="view.mode" value="{{mode}}"> {{mode}}
+        </div>
+        <div ng-switch on="view.mode">
+          <div ng-switch-when="table">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Action</th>
+                  <th>Complete</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="item in todos" ng-class="$odd? 'odd':'even'">
+                  <td>{{index+1}}</td>
+                  <td>{{item.action}}</td>
+                  <td ng-if="$first" class="bg-info">{{item.complete}}</td>
+                  <td ng-if="$middle">{{item.complete}}</td>
+                  <td ng-if="$last" class="bg-warning">{{item.complete}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div ng-switch-when="list">
+            <ol>
+              <li ng-repeat="item in todos">
+                  {{item.action}}
+                  <span ng-if="item.complete">Done</span>
+              </li>
+          </ol>
+          </div>
+          <div ng-switch-default>
+            Select another option to display a layout
+          </div>
+        </div>
+
+      </div>
+    </div>
+</div>
