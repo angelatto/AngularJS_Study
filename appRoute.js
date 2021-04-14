@@ -24,6 +24,14 @@ angular.module("app")
             .when("/exam11_outside_to_scope", {templateUrl: "views/exam11_outside_to_scope.html", controller: "exam11Controller"})
             .when("/exam12_one_way_binding", {templateUrl: "views/exam12_one_way_binding.html", controller: "exam12Controller"})
             .when("/exam13_two_way_binding", {templateUrl: "views/exam13_two_way_binding.html", controller: "exam13Controller"})
+            .when("/exam14_ng-repeat", {templateUrl: "views/exam14_ng-repeat.html", controller: "exam14Controller"})
+            .when("/exam15_ng-include", {templateUrl: "views/exam15_ng-include/index.html", controller: "exam15Controller"})
+            .when("/exam16_ng-switch", {templateUrl: "views/exam16_ng-switch.html", controller: "exam16Controller"})
+            .when("/exam17_ng-show_ng-hide_ng-if", {templateUrl: "views/exam17_ng-show_ng-hide_ng-if.html", controller: "exam17Controller"})
+            .when("/exam18_ng-class_ng-style", {templateUrl: "views/exam18_ng-class_ng-style.html", controller: "exam18Controller"})
+            .when("/exam19_event_directive", {templateUrl: "views/exam19_event_directive.html", controller: "exam19Controller"})
+            .when("/exam20_boolean_href_src", {templateUrl: "views/exam20_boolean_href_src.html", controller: "exam20Controller"})
+            .when("/exam21_form_validation", {templateUrl: "views/exam21_form_validation.html", controller: "exam21Controller"})
             .otherwise({redirectTo: "/"});
     
     });

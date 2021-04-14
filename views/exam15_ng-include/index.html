@@ -1,0 +1,18 @@
+
+<div class="card">
+    <div class="card-header">
+        exam15_ng-include
+    </div>
+    <div class="card-body">
+        <div class="alert alert-primary">
+            <input type="checkbox" ng-model="showList"/> Use the list view 
+            <button class="btn btn-danger btn-sm ml-3" ng-click="changeView()">화면 변경</button>
+        </div>
+        <ng-include src="'views/exam15_ng-include/' + viewFile()" onload="handleLoad()"></ng-include>
+    </div>
+</div>
+<!--  주의!!! 
+    ng뒤에 들어가는 것은 모두 표현식이기 때문에 
+문자열을 적으려면 문자열 표시를 해주어야 한다. !!! 작은따옴표로 문자열 표시해줘야한다 
+ 표현식에서 쓰이는 함수는 모두 scope 안에 정의된 것이다. -> 따라서 컨트롤러에서 정의해주어야 한다. 
+-->

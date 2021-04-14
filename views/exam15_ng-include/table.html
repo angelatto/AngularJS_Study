@@ -1,0 +1,18 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Action</th>
+        <th>Complete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in todos" ng-class="$odd? 'odd':'even'">
+        <td>{{index+1}}</td>
+        <td>{{item.action}}</td>
+        <td ng-if="$first" class="bg-info">{{item.complete}}</td>
+        <td ng-if="$middle">{{item.complete}}</td>
+        <td ng-if="$last" class="bg-warning">{{item.complete}}</td>
+      </tr>
+    </tbody>
+  </table>
