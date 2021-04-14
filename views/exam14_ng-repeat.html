@@ -1,0 +1,63 @@
+<style>
+  .odd{
+    background-color: yellow;
+  }
+  .even{
+    background-color: red;
+  }
+</style>
+
+<div id="exam11Card" class="card">
+    <div class="card-header">
+      exam14_ng-repeat
+    </div>
+
+    <div class="card-body">
+      <div>
+        <div class="alert alert-success">
+          배열 항목 반복 및 객체 속성 반복
+        </div>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Action</th>
+              <th>Complete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="item in todos" ng-class="$odd? 'odd':'even'">
+              <td>{{index+1}}</td>
+              <td ng-repeat="prop in item">{{prop}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div>
+        <div class="alert alert-success">
+          배열 항목 반복 및 객체 속성 반복
+        </div>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Action</th>
+              <th>Complete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="item in todos" ng-class="$odd? 'odd':'even'">
+              <td>{{index+1}}</td>
+              <td>{{item.action}}</td>
+              <td ng-if="$first" class="bg-info">{{item.complete}}</td>
+              <td ng-if="$middle">{{item.complete}}</td>
+              <td ng-if="$last" class="bg-warning">{{item.complete}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+</div>
