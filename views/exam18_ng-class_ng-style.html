@@ -1,0 +1,30 @@
+<style>
+  .custom-class{
+    background-color: orange;
+
+  }
+</style>
+
+<div class="card">
+  <div class="card-header">
+    exam18_ng-class_ng-style
+  <div class="card-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Action</th>
+          <th>Done</th>
+        </tr>
+      </thead>
+      <!-- <tr ng-repeat="item in todos" ng-class-odd="'custom-class'">
+      <tr ng-repeat="item in todos" ng-class-odd="customClass"> -->
+      <tr ng-repeat="item in todos" ng-class-odd="{'custom-class' : status === true}">
+        <td>{{$index + 1}}</td>
+        <td>{{item.action}}</td>
+        <td ng-style="{'color':customColor, 'font-size':'2rem'}">{{item.complete}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
