@@ -32,6 +32,7 @@ angular.module("app")
             .when("/exam19_event_directive", {templateUrl: "views/exam19_event_directive.html", controller: "exam19Controller"})
             .when("/exam20_boolean_href_src", {templateUrl: "views/exam20_boolean_href_src.html", controller: "exam20Controller"})
             .when("/exam21_form_validation", {templateUrl: "views/exam21_form_validation.html", controller: "exam21Controller"})
+            .when("/exam22_filter", {templateUrl: "views/exam22_filter.html", controller: "exam22Controller"})
             .otherwise({redirectTo: "/"});
     
     });
