@@ -12,8 +12,16 @@ app.config(function($locationProvider) {
 
 // app 모듈 생성 
 angular.module("app", ["ngRoute", "exam03Module", "exam04Module"])
-    .config(function() {
+    .config(function(counterServiceByProviderProvider, $logProvider) {
         console.log("app.js - config callback ");
+        /* (중요***)
+            1. 다른데는 안되고 config 함수에서만 프로바이더 객체를 주입받을 수 있다. 
+            2. 프로바이터 접미사 붙여준다. 
+         */
+        counterServiceByProviderProvider.setCount(100);
+        /* true로 해놓아야 디버그 레벨의 로그가 브라우저의 콘솔창에서 보여진다. */
+        $logProvider.debugEnabled(true);
+
     })
     .run(function($rootScope) {
         console.log("app.js - run callback");

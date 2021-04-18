@@ -33,6 +33,17 @@ angular.module("app")
             .when("/exam20_boolean_href_src", {templateUrl: "views/exam20_boolean_href_src.html", controller: "exam20Controller"})
             .when("/exam21_form_validation", {templateUrl: "views/exam21_form_validation.html", controller: "exam21Controller"})
             .when("/exam22_filter", {templateUrl: "views/exam22_filter.html", controller: "exam22Controller"})
+            .when("/exam23_service_declaration", {templateUrl: "views/exam23_service_declaration.html", controller: "exam23Controller"})
+            
+            /* 아래에서 컨트롤러 이름이 같지만(컨트롤러 파일을 공유하지만) 모두 다른 객체이다. 
+               주의 ) 두개의 컨트롤러의 객체는 다르다.  
+                    두 영역의 상태 데이터는 공유되지 않는다. 
+                    루트영역이나 메인컨트롤러에 저장하면 공유할 수 있다. 
+            */
+            .when("/exam24_builtin_service", {templateUrl: "views/exam24_builtin_service/index.html", controller: "exam24Controller"})
+            .when("/exam24_builtin_service/boards", {templateUrl: "views/exam24_builtin_service/boards.html", controller: "exam24Controller"})
+            .when("/exam24_builtin_service/boards/:bno", {templateUrl: "views/exam24_builtin_service/boards.html", controller: "exam24Controller"})
+            // :bno가 경로 변수이다. 
             .otherwise({redirectTo: "/"});
     
     });
