@@ -43,6 +43,12 @@ angular.module("app")
             .when("/exam24_builtin_service", {templateUrl: "views/exam24_builtin_service/index.html", controller: "exam24Controller"})
             .when("/exam24_builtin_service/boards", {templateUrl: "views/exam24_builtin_service/boards.html", controller: "exam24Controller"})
             .when("/exam24_builtin_service/boards/:bno", {templateUrl: "views/exam24_builtin_service/boards.html", controller: "exam24Controller"})
+            
+            .when("/exam25_http_products", {templateUrl: "views/exam25_http_products/index.html", controller: "exam25Controller"})
+            .when("/exam26_http_boards", {templateUrl: "views/exam26_http_boards/index.html", controller: "exam26Controller"})
+         
+            .when("/exam27_http_auth", {templateUrl: "views/exam27_http_auth/login.html", controller: "exam27Controller"})
+         
             // :bno가 경로 변수이다. 
             .otherwise({redirectTo: "/"});
     

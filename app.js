@@ -12,7 +12,7 @@ app.config(function($locationProvider) {
 
 // app 모듈 생성 
 angular.module("app", ["ngRoute", "exam03Module", "exam04Module"])
-    .config(function(counterServiceByProviderProvider, $logProvider) {
+    .config(function(counterServiceByProviderProvider,$logProvider) {
         console.log("app.js - config callback ");
         /* (중요***)
             1. 다른데는 안되고 config 함수에서만 프로바이더 객체를 주입받을 수 있다. 
@@ -23,7 +23,7 @@ angular.module("app", ["ngRoute", "exam03Module", "exam04Module"])
         $logProvider.debugEnabled(true);
 
     })
-    .run(function($rootScope) {
+    .run(function($rootScope, $http) {
         console.log("app.js - run callback");
         // 전역 데이터 
         $rootScope.rootUid = "user100";
@@ -31,13 +31,26 @@ angular.module("app", ["ngRoute", "exam03Module", "exam04Module"])
         $rootScope.rootGetGreet = () => {
             return "Hello AngularJS";
         };
+        // 어플리케이션이 실행될때마다 자동실행 - 세션 저장소에 있는 uid, authToken을 읽기 
+        $rootScope.rootUid = sessionStorage.getItem("uid");
+        $rootScope.authToken = sessionStorage.getItem("authToken");
+       
+        // $rootScope.authToken의 값의 변화를 감시 
+        $rootScope.$watch("authToken", (newValue) => {
+            if(newValue){  // 로그인 상태 , 여기서 세션 저장해도 댐 
+                $http.defaults.headers.common.authToken = newValue;
+            }else{  // 로그아웃 상태 , 여기서 세션 지워도 댐 
+                delete $http.defaults.headers.common.authToken;
+            }
+        });
+
     })
     /* 
     중첩된 컨트롤러 범위에서 사용할 수 있는 상태 데이터 및 함수 
     mainController를 index.html의 body에 설정해놓으면 계층관계로 인해서
     다른 모든 컨트롤러에서도 사용 가능하다. 
     */
-    .controller("mainController", function($scope, $rootScope){
+    .controller("mainController", function($scope, $rootScope, $location, $route){
         $scope.mainUid = "user200";
 
         $scope.mainGetGreet = () => {
@@ -46,6 +59,9 @@ angular.module("app", ["ngRoute", "exam03Module", "exam04Module"])
 
         $scope.logout = () => {
             $rootScope.rootUid = "";
+            $rootScope.authToken = "";
+            sessionStorage.removeItem("uid");
+            sessionStorage.removeItem("authToken");
            // delete $rootScope.rootUid;
         };
 
@@ -61,5 +77,13 @@ angular.module("app", ["ngRoute", "exam03Module", "exam04Module"])
             console.log("mainController가 logout 방송 수신함");
             $rootScope.rootUid = "";
         });
+
+        // 이전 URL과 동일한 URL일 경우 리프레쉬함 
+        $scope.reloadable = (path) => {
+            if($location.url().includes(path)){
+                $route.reload(); // 알아두기 !! 현재 페이지 갱신 
+            }
+        };
+
 
     });
