@@ -1,0 +1,31 @@
+<div class="card">
+    <div class="card-header">
+        read.html
+    </div>
+    <div class="card-body">
+        <div>
+            <div class="form-group">
+                <label>제목:</label>
+                <input class="form-control" ng-value="board.btitle" readonly/>
+            </div>
+            <div class="form-group">
+                <label>글쓴이:</label>
+                <input class="form-control" ng-value="board.bwriter" readonly/>
+            </div>
+            <div class="form-group">
+                <label>내용:</label>
+                <textarea class="form-control" ng-value="board.bcontent" readonly></textarea>
+            </div>
+            <div class="form-group">
+                <label>첨부:</label>
+                <a ng-hide="board.battachoname == null" href="{{battachUrl(board.bno)}}"> <!-- 클릭하면 이미지 파일 다운로드 -->
+                    <img src="{{battachUrl(board.bno)}}" width="200"/>  <!-- src는 이미지 미리보기 -->
+                </a>
+            </div>
+            <button class="btn btn-primary btn-sm" ng-click="getList(pager.pageNo)">목록</button>
+            <button ng-show="rootUid==board.bwriter" class="btn btn-primary btn-sm" ng-click="updateBoardForm()">수정</button> 
+            <button ng-show="rootUid==board.bwriter" class="btn btn-primary btn-sm" ng-click="deleteBoard(board.bno)">삭제</button>       
+        </div>
+        
+    </div>
+</div>
